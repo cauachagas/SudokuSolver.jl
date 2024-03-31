@@ -55,3 +55,43 @@ end
         end
     end
 end
+
+@testset "Number 7 is invalid for first col" begin
+    col = 1
+    num = 7
+    @test numIsValidForAllRowsMatrixByCollumn(problem, col, num) == false
+end
+
+@testset "Test All invalid Numbers for fifth col" begin
+    col = 5
+    invalidNumbers = [x for x in problem[:, col] if x != 0]
+    for invalidNum ∈ invalidNumbers
+        @test numIsValidForAllRowsMatrixByCollumn(problem, col, invalidNum) == false
+    end    
+end    
+
+@testset "Test All invalid Numbers for All cols" begin
+    cols = 1:9
+    for col ∈ cols
+        invalidNumbers = [x for x in problem[:, col] if x != 0]
+        for invalidNum ∈ invalidNumbers
+            @test numIsValidForAllRowsMatrixByCollumn(problem, col, invalidNum) == false
+        end    
+    end    
+end    
+
+@testset "Number 1 is valid for sixth col" begin
+    col = 6
+    num = 1
+    @test numIsValidForAllRowsMatrixByCollumn(problem, col, num) == true
+end
+
+@testset "Test All valid Numbers for All cols" begin
+    cols = 1:9
+    for col ∈ cols
+        invalidNumbers = [x for x in problem[:, col] if x != 0]
+        for validNum ∈ valuesAvailable(invalidNumbers)
+            @test numIsValidForAllRowsMatrixByCollumn(problem, col, validNum) == true
+        end
+    end
+end
