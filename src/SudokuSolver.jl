@@ -3,7 +3,16 @@ module SudokuSolver
     export
     numIsValidForAllCollumsMatrixByRow,
     numIsValidForAllRowsMatrixByCollumn,
-    numIsValidForTheQuadByRowAndCollumn
+    getRowInitGrid, 
+    getColInitGrid
+
+    function getRowInitGrid(row)
+        row - (row-1) % 3
+    end
+
+    function getColInitGrid(col)
+        col - (col-1) % 3
+    end
 
     function numIsValidForAllCollumsMatrixByRow(grid, row, num)
         isnothing(findfirst( x -> x == num, grid[row, :]))

@@ -95,3 +95,46 @@ end
         end
     end
 end
+
+@testset "get Row Init Grid using any Row" begin
+
+    @testset "Using the range 1:3 the init grid is 1" begin
+        for i = 1:3
+            @test getRowInitGrid(i) == 1
+        end
+    end
+
+    @testset "Using the range 4:6 the init grid is 4" begin
+        for i = 4:6
+            @test getRowInitGrid(i) == 4
+        end
+    end
+
+    @testset "Using the range 7:9 the init grid is 7" begin
+        for i = 7:9
+            @test getRowInitGrid(i) == 7
+        end
+    end
+end
+
+@testset "get Col Init Grid using any Col" begin
+    
+    @testset "Using the range 1:3 the init grid is 1" begin
+        for i = 1:3
+            @test getColInitGrid(i) == 1
+        end
+    end
+
+    @testset "Using the range 4:6 the init grid is 4" begin
+        for i = 4:6
+            @test getColInitGrid(i) == 4
+        end
+    end
+
+    @testset "Using the range 7:9 the init grid is 7" begin
+        for i = 7:9
+            @test getColInitGrid(i) == 7
+        end
+    end
+    
+end
