@@ -26,7 +26,7 @@ end
     row = 2
     invalidNumbers = [x for x in problem[row, :] if x != 0]
     for invalidNum ∈ invalidNumbers
-        @test numIsValidForAllCollumsMatrixByRow(problem, 2, invalidNum) == false
+        @test numIsValidForAllCollumsMatrixByRow(problem, row, invalidNum) == false
     end    
 end    
 
