@@ -27,8 +27,8 @@ end
     invalidNumbers = [x for x in problem[row, :] if x != 0]
     for invalidNum ∈ invalidNumbers
         @test numIsValidForAllCollumsMatrixByRow(problem, row, invalidNum) == false
-    end    
-end    
+    end
+end
 
 @testset "Test All invalid Numbers for All rows" begin
     rows = 1:9
@@ -36,9 +36,9 @@ end
         invalidNumbers = [x for x in problem[row, :] if x != 0]
         for invalidNum ∈ invalidNumbers
             @test numIsValidForAllCollumsMatrixByRow(problem, row, invalidNum) == false
-        end    
-    end    
-end    
+        end
+    end
+end
 
 @testset "Number 2 is valid for second row" begin
     row = 2
@@ -67,8 +67,8 @@ end
     invalidNumbers = [x for x in problem[:, col] if x != 0]
     for invalidNum ∈ invalidNumbers
         @test numIsValidForAllRowsMatrixByCollumn(problem, col, invalidNum) == false
-    end    
-end    
+    end
+end
 
 @testset "Test All invalid Numbers for All cols" begin
     cols = 1:9
@@ -76,9 +76,9 @@ end
         invalidNumbers = [x for x in problem[:, col] if x != 0]
         for invalidNum ∈ invalidNumbers
             @test numIsValidForAllRowsMatrixByCollumn(problem, col, invalidNum) == false
-        end    
-    end    
-end    
+        end
+    end
+end
 
 @testset "Number 1 is valid for sixth col" begin
     col = 6
@@ -118,7 +118,7 @@ end
 end
 
 @testset "get Col Init Grid using any Col" begin
-    
+
     @testset "Using the range 1:3 the init grid is 1" begin
         for i = 1:3
             @test getColInitGrid(i) == 1
@@ -136,5 +136,5 @@ end
             @test getColInitGrid(i) == 7
         end
     end
-    
+
 end

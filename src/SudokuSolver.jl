@@ -3,7 +3,7 @@ module SudokuSolver
     export
     numIsValidForAllCollumsMatrixByRow,
     numIsValidForAllRowsMatrixByCollumn,
-    getRowInitGrid, 
+    getRowInitGrid,
     getColInitGrid
 
     function getRowInitGrid(row)
