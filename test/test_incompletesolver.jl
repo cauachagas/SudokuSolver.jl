@@ -68,7 +68,7 @@ end
             end
         end
         if grid[row, col] == 0
-            circshift!(validNumbers, 1)
+            validNumbers = circshift(validNumbers, 1)
             for row ∈ rows
                 for num ∈ validNumbers
                     if numIsValidForAllRowColumnAndHisQuad(grid, row, col, num)
@@ -109,7 +109,7 @@ end
     solveCol(grid, rows, col, validNumbers)
     @test grid[:, col] == [3, 6, 7, 4, 5, 8, 1, 0, 2]
 
-    circshift!(validNumbers, 1)
+    validNumbers = circshift(validNumbers, 1)
     solveCol(grid, rows, col, validNumbers)
     @test grid[:, col] == [3, 6, 7, 9, 5, 8, 1, 4, 2]
 
