@@ -1,11 +1,11 @@
 module SudokuSolver
 
     export
-    numIsValidForAllCollumsMatrixByRow,
-    numIsValidForAllRowsMatrixByCollumn,
+    numIsValidForAllColumnsByRow,
+    numIsValidForAllRowsByColumn,
     getRowInitQuad,
     getColInitQuad,
-    numIsValidForTheQuadByRowAndCollumn,
+    numIsValidForTheQuadByRowAndColumn,
     numIsValidForAllRowColumnAndHisQuad,
     numIsValidInQuad
 
@@ -17,11 +17,11 @@ module SudokuSolver
         col - (col-1) % 3
     end
 
-    function numIsValidForAllCollumsMatrixByRow(grid, row, num)
+    function numIsValidForAllColumnsByRow(grid, row, num)
         isnothing(findfirst( x -> x == num, grid[row, :]))
     end
 
-    function numIsValidForAllRowsMatrixByCollumn(grid, col, num)
+    function numIsValidForAllRowsByColumn(grid, col, num)
         isnothing(findfirst( x -> x == num, grid[:, col]))
     end
 
@@ -29,7 +29,7 @@ module SudokuSolver
         isnothing(findfirst( x -> x == num, grid))
     end
 
-    function numIsValidForTheQuadByRowAndCollumn(grid, row, col, num; returnQuad=false)
+    function numIsValidForTheQuadByRowAndColumn(grid, row, col, num; returnQuad=false)
         rowInit = getRowInitQuad(row)
         colInit = getColInitQuad(col)
         quad = grid[rowInit:(rowInit+2), colInit:(colInit+2)]

@@ -19,14 +19,14 @@ valuesAvailable(x) = [setdiff(allPossibilities, x);]
 @testset "Number 8 is invalid for second row" begin
     row = 2
     num = 8
-    @test numIsValidForAllCollumsMatrixByRow(problem, row, num) == false
+    @test numIsValidForAllColumnsByRow(problem, row, num) == false
 end
 
 @testset "Test All invalid Numbers for second row" begin
     row = 2
     invalidNumbers = [x for x in problem[row, :] if x != 0]
     for invalidNum ∈ invalidNumbers
-        @test numIsValidForAllCollumsMatrixByRow(problem, row, invalidNum) == false
+        @test numIsValidForAllColumnsByRow(problem, row, invalidNum) == false
     end
 end
 
@@ -35,7 +35,7 @@ end
     for row ∈ rows
         invalidNumbers = [x for x in problem[row, :] if x != 0]
         for invalidNum ∈ invalidNumbers
-            @test numIsValidForAllCollumsMatrixByRow(problem, row, invalidNum) == false
+            @test numIsValidForAllColumnsByRow(problem, row, invalidNum) == false
         end
     end
 end
@@ -43,7 +43,7 @@ end
 @testset "Number 2 is valid for second row" begin
     row = 2
     num = 2
-    @test numIsValidForAllCollumsMatrixByRow(problem, row, num) == true
+    @test numIsValidForAllColumnsByRow(problem, row, num) == true
 end
 
 @testset "Test All valid Numbers for All rows" begin
@@ -51,7 +51,7 @@ end
     for row ∈ rows
         invalidNumbers = [x for x in problem[row, :] if x != 0]
         for validNum ∈ valuesAvailable(invalidNumbers)
-            @test numIsValidForAllCollumsMatrixByRow(problem, row, validNum) == true
+            @test numIsValidForAllColumnsByRow(problem, row, validNum) == true
         end
     end
 end
@@ -59,14 +59,14 @@ end
 @testset "Number 7 is invalid for first col" begin
     col = 1
     num = 7
-    @test numIsValidForAllRowsMatrixByCollumn(problem, col, num) == false
+    @test numIsValidForAllRowsByColumn(problem, col, num) == false
 end
 
 @testset "Test All invalid Numbers for fifth col" begin
     col = 5
     invalidNumbers = [x for x in problem[:, col] if x != 0]
     for invalidNum ∈ invalidNumbers
-        @test numIsValidForAllRowsMatrixByCollumn(problem, col, invalidNum) == false
+        @test numIsValidForAllRowsByColumn(problem, col, invalidNum) == false
     end
 end
 
@@ -75,7 +75,7 @@ end
     for col ∈ cols
         invalidNumbers = [x for x in problem[:, col] if x != 0]
         for invalidNum ∈ invalidNumbers
-            @test numIsValidForAllRowsMatrixByCollumn(problem, col, invalidNum) == false
+            @test numIsValidForAllRowsByColumn(problem, col, invalidNum) == false
         end
     end
 end
@@ -83,7 +83,7 @@ end
 @testset "Number 1 is valid for sixth col" begin
     col = 6
     num = 1
-    @test numIsValidForAllRowsMatrixByCollumn(problem, col, num) == true
+    @test numIsValidForAllRowsByColumn(problem, col, num) == true
 end
 
 @testset "Test All valid Numbers for All cols" begin
@@ -91,7 +91,7 @@ end
     for col ∈ cols
         invalidNumbers = [x for x in problem[:, col] if x != 0]
         for validNum ∈ valuesAvailable(invalidNumbers)
-            @test numIsValidForAllRowsMatrixByCollumn(problem, col, validNum) == true
+            @test numIsValidForAllRowsByColumn(problem, col, validNum) == true
         end
     end
 end
