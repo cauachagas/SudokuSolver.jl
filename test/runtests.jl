@@ -168,3 +168,16 @@ end
         )
     end
 end
+
+@testset "Check valid values for all rows, all cols and his quad" begin
+    # Quads
+    # | 1 | 4 | 7 |
+    # | 2 | 5 | 8 |
+    # | 3 | 6 | 9 |
+    rowcolval = [(3,3,8),(5,2,2),(7,1,8),(1,4,2),(6,6,8),(9,6,8),(3,8,1),(4,7,2),(8,9,2)]
+    for i ∈ 1:9
+        @test numIsValidForAllRowColumnAndHisQuad(
+            problem, rowcolval[i][1], rowcolval[i][2], rowcolval[i][3]
+        )
+    end
+end

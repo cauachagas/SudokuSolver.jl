@@ -39,4 +39,21 @@ module SudokuSolver
         numIsValidInQuad(quad , num)
     end
 
+    function numIsValidForAllRowColumnAndHisQuad(grid, row, col, num)
+
+        if !numIsValidForAllColumnsByRow(grid, row, num)
+            return false
+        end
+
+        if !numIsValidForAllRowsByColumn(grid, col, num)
+            return false
+        end
+
+        if !numIsValidForTheQuadByRowAndColumn(grid, row, col, num)
+            return false
+        end
+
+        true
+    end
+
 end
