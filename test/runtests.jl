@@ -96,45 +96,62 @@ end
     end
 end
 
-@testset "get Row Init Grid using any Row" begin
+@testset "get Row Init Quad using any Row" begin
 
     @testset "Using the range 1:3 the init grid is 1" begin
         for i = 1:3
-            @test getRowInitGrid(i) == 1
+            @test getRowInitQuad(i) == 1
         end
     end
 
     @testset "Using the range 4:6 the init grid is 4" begin
         for i = 4:6
-            @test getRowInitGrid(i) == 4
+            @test getRowInitQuad(i) == 4
         end
     end
 
     @testset "Using the range 7:9 the init grid is 7" begin
         for i = 7:9
-            @test getRowInitGrid(i) == 7
+            @test getRowInitQuad(i) == 7
         end
     end
 end
 
-@testset "get Col Init Grid using any Col" begin
+@testset "get Col Init Quad using any Col" begin
 
     @testset "Using the range 1:3 the init grid is 1" begin
         for i = 1:3
-            @test getColInitGrid(i) == 1
+            @test getColInitQuad(i) == 1
         end
     end
 
     @testset "Using the range 4:6 the init grid is 4" begin
         for i = 4:6
-            @test getColInitGrid(i) == 4
+            @test getColInitQuad(i) == 4
         end
     end
 
     @testset "Using the range 7:9 the init grid is 7" begin
         for i = 7:9
-            @test getColInitGrid(i) == 7
+            @test getColInitQuad(i) == 7
         end
     end
 
+end
+
+@testset "Valid values for each quad" begin
+    # Quads
+    # | 1 | 4 | 7 |
+    # | 2 | 5 | 8 |
+    # | 3 | 6 | 9 |
+    validNumbersByQuad = [8, 8, 8, 1, 8, 8, 1, 8, 8]
+    quadNumber = 1
+    for j ∈ 1:3:9
+        for i ∈ 1:3:9
+            quad = problem[i:(i+2), j:(j+2)]
+            # @show i, j, validNumbersByQuad[quadNumber], quad
+            @test numIsValidInQuad(quad, validNumbersByQuad[quadNumber])
+            quadNumber += 1
+        end
+    end
 end
