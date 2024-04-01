@@ -155,3 +155,16 @@ end
         end
     end
 end
+
+@testset "Find quad using Row and Col and check values are valid for each quad" begin
+    # Quads
+    # | 1 | 4 | 7 |
+    # | 2 | 5 | 8 |
+    # | 3 | 6 | 9 |
+    rowcolval = [(1,3,8),(4,1,2),(7,1,8),(1,4,2),(4,4,8),(7,4,8),(1,7,1),(4,7,2),(7,7,2)]
+    for i ∈ 1:9
+        @test numIsValidForTheQuadByRowAndColumn(
+            problem, rowcolval[i][1], rowcolval[i][2], rowcolval[i][3]
+        )
+    end
+end
