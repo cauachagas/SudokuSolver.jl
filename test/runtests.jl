@@ -43,7 +43,7 @@ end
 @testset "Number 2 is valid for second row" begin
     row = 2
     num = 2
-    @test numIsValidForAllColumnsByRow(problem, row, num) == true
+    @test numIsValidForAllColumnsByRow(problem, row, num)
 end
 
 @testset "Test All valid Numbers for All rows" begin
@@ -51,7 +51,7 @@ end
     for row ∈ rows
         invalidNumbers = [x for x in problem[row, :] if x != 0]
         for validNum ∈ valuesAvailable(invalidNumbers)
-            @test numIsValidForAllColumnsByRow(problem, row, validNum) == true
+            @test numIsValidForAllColumnsByRow(problem, row, validNum)
         end
     end
 end
@@ -83,7 +83,7 @@ end
 @testset "Number 1 is valid for sixth col" begin
     col = 6
     num = 1
-    @test numIsValidForAllRowsByColumn(problem, col, num) == true
+    @test numIsValidForAllRowsByColumn(problem, col, num)
 end
 
 @testset "Test All valid Numbers for All cols" begin
@@ -91,7 +91,7 @@ end
     for col ∈ cols
         invalidNumbers = [x for x in problem[:, col] if x != 0]
         for validNum ∈ valuesAvailable(invalidNumbers)
-            @test numIsValidForAllRowsByColumn(problem, col, validNum) == true
+            @test numIsValidForAllRowsByColumn(problem, col, validNum)
         end
     end
 end
@@ -146,10 +146,10 @@ end
     # | 3 | 6 | 9 |
     validNumbersByQuad = [8, 8, 8, 1, 8, 8, 1, 8, 8]
     quadNumber = 1
-    for j ∈ 1:3:9
-        for i ∈ 1:3:9
-            quad = problem[i:(i+2), j:(j+2)]
-            # @show i, j, validNumbersByQuad[quadNumber], quad
+    for col ∈ 1:3:9
+        for row ∈ 1:3:9
+            quad = problem[row:(row+2), col:(col+2)]
+            # @show row, col, validNumbersByQuad[quadNumber], quad
             @test numIsValidInQuad(quad, validNumbersByQuad[quadNumber])
             quadNumber += 1
         end
