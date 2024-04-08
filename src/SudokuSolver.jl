@@ -7,7 +7,16 @@ module SudokuSolver
     getColInitQuad,
     numIsValidForTheQuadByRowAndColumn,
     numIsValidForAllRowColumnAndHisQuad,
-    numIsValidInQuad
+    numIsValidInQuad,
+    allPossibilities,
+    valuesAvailable,
+    invalidRowNumbers,
+    rowsNotEmpty
+
+    allPossibilities = [x for x in 1:9]
+    valuesAvailable(x) = [setdiff(allPossibilities, x);]
+    invalidRowNumbers(grid, col) = [x for x in grid[:, col] if x != 0]
+    rowsNotEmpty(grid, col) = findall( x -> x == 0, grid[:, col])
 
     function getRowInitQuad(row)
         row - (row-1) % 3

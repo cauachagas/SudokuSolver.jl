@@ -12,9 +12,6 @@ problem = [
     2  0  6  0  0  0  3  0  0;
 ]
 
-allPossibilities = [x for x in 1:9]
-valuesAvailable(x) = [setdiff(allPossibilities, x);]
-
 @testset "Number 8 is invalid for second row" begin
     row = 2
     num = 8

@@ -12,11 +12,6 @@ problem = [
     2  0  6  0  0  0  3  0  0;
 ]
 
-allPossibilities = [x for x in 1:9]
-valuesAvailable(x) = [setdiff(allPossibilities, x);]
-invalidRowNumbers(grid, col) = [x for x in grid[:, col] if x != 0]
-rowsNotEmpty(grid, col) = findall( x -> x == 0, grid[:, col])
-
 @testset "Incomplete solve for col = 1" begin
     grid = copy(problem)
     col = 1
@@ -147,7 +142,8 @@ end
             if putValuesInAllRows(rows, col, grid, validNumbers)
                 break
             end
-            circshift!(validNumbers, 1)
+            validNumbers = circshift(validNumbers, 1)
+            # circshift!(validNumbers, 1) # Don't works at 1.6.7
         end
         # while !putValuesInAllRows(rows, col, grid, validNumbers)
         #     circshift!(validNumbers, 1)
